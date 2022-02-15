@@ -1,0 +1,73 @@
+{
+	"name": "WebBoMTool",
+	"version": "",
+	"license-name": "GPL-3.0-only",
+	"author": [
+		"[http://www.hallowelt.com Hallo Welt! GmbH]"
+	],
+	"url": "http://www.hallowelt.com",
+	"descriptionmsg": "webbomtool-desc",
+	"requires": {
+		"MediaWiki": ">= 1.31.0"
+	},
+
+	"SpecialPages": {
+		"WebBoMTool": "WebBoMTool\\Special\\WebBoMTool"
+	},
+	"MessagesDirs": {
+		"WebBoMTool": "i18n"
+	},
+	"ExtensionMessagesFiles": {
+		"WebBoMToolAlias": "languages/WebBoMTool.special.alias.php"
+	},
+	"AutoloadNamespaces": {
+		"WebBoMTool\\": "src/",
+		"WebBoMTool\\Tests\\": "tests/phpunit"
+	},
+	"ResourceModules": {
+		"ext.webBoMTool.productoverview": {
+			"scripts": [
+				"ext.webBoMTool.productoverview.js"
+			],
+			"styles": [
+
+			],
+			"dependencies": [
+				"ext.bluespice.extjs",
+				"ext.bluespice.extjs.BS.deferred",
+				"mediawiki.api",
+				"mediawiki.Title"
+			],
+			"messages": [
+				"bs-webbomtool-compatibility-column-header"
+			]
+		},
+		"ext.webBoMTool": {
+			"scripts": [
+				"ext.webBoMTool.js"
+			],
+			"styles": [
+				"ext.webBoMTool.less"
+			],
+			"dependencies": [
+				"ext.bluespice"
+			]
+		},
+		"ext.webBoMTool.styles": {
+			"styles": [
+				"ext.webBoMTool.static.less"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "WebBoMTool/resources"
+	},
+	"Hooks": {
+		"BeforePageDisplay": "WebBoMTool\\Hook\\BeforePageDisplay\\AddModules::callback"
+	},
+	"APIModules": {
+		"bs-webbomtool-product-store": "\\WebBoMTool\\Api\\Store\\Products"
+	},
+	"manifest_version": 2
+}

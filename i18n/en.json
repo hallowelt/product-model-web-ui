@@ -1,5 +1,6 @@
 {
 	"webbomtool-desc": "English description of WebBoMTool",
 	"bs-webbomtool-compatibility-column-header": "License Compatibility",
+	"bs-webbomtool-license-column-header": "License",
 	"webbomtool": "WebBoMTool"
 }

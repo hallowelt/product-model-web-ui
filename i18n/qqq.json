@@ -1,4 +1,5 @@
 {
 	"webbomtool-desc": "Description of WebBoMTool for [[Special:Version]]",
-	"bs-webbomtool-compatibility-column-header": "Column header in grid for license compatibility indication"
+	"bs-webbomtool-compatibility-column-header": "Column header in grid for license compatibility indication",
+	"bs-webbomtool-license-column-header": "Column header in grid for component license information"
 }

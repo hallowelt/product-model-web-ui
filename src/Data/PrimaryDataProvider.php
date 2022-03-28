@@ -77,7 +77,8 @@ class PrimaryDataProvider implements \BlueSpice\Data\IPrimaryDataProvider {
 					$oComponent->leaf = true;
 					$oComponent->tracking = $component->license->spdxId;
 					$oComponent->id = 'src/' . $product->name . '/' . str_replace( '/', '+', $oComponent->text );
-					$oComponent->compatible = $compatibilityList[$oComponent->text];
+					$oComponent->compatible = $compatibilityList[$oComponent->text]["compatibility"];
+					$oComponent->license = $compatibilityList[$oComponent->text]["license"];
 					$this->data[] = new \BlueSpice\Data\Record( $oComponent );
 				}
 			}
@@ -95,7 +96,7 @@ class PrimaryDataProvider implements \BlueSpice\Data\IPrimaryDataProvider {
 		$output = curl_exec($ch);
 		curl_close($ch);
 
-		$output_json = \Safe\json_decode( $output );
+		$output_json = json_decode( $output );
 
 		foreach ( $output_json as $component ) {
 			$components[] = $component;
@@ -113,15 +114,14 @@ class PrimaryDataProvider implements \BlueSpice\Data\IPrimaryDataProvider {
 		$output = curl_exec($ch);
 		curl_close($ch);
 
-		$output_json = \Safe\json_decode( $output );
+		$output_json = json_decode( $output );
+		
+		error_log( var_export( $output, true ) );
 
 		foreach ( $output_json->result as $compatibility ) {
-			$parts = explode( "[", $compatibility );
-			array_shift( $parts );
-			$package = explode( " ", $parts[0] )[1];
-			$compat = !str_contains( $parts[1], "is not compatible" );
-
-			$components[$package] = $compat;
+			$package = $compatibility->Package->name;
+			$components[$package]["compatibility"] = $compatibility->is_compatible;
+			$components[$package]["license"] = $compatibility->Package->license;
 		}
 
 		return $components;

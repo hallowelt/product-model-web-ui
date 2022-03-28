@@ -1,4 +1,5 @@
 {
 	"webbomtool-desc": "Deutsche Beschreibung von WebBoMTool",
-	"bs-webbomtool-compatibility-column-header": "Lizenzkompatibilität"
+	"bs-webbomtool-compatibility-column-header": "Lizenzkompatibilität",
+	"bs-webbomtool-license-column-header": "Lizenz"
 }

@@ -39,7 +39,8 @@
 				"mediawiki.Title"
 			],
 			"messages": [
-				"bs-webbomtool-compatibility-column-header"
+				"bs-webbomtool-compatibility-column-header",
+				"bs-webbomtool-license-column-header"
 			]
 		},
 		"ext.webBoMTool": {

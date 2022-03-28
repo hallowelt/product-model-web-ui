@@ -47,6 +47,11 @@ Ext.define( "BS.WebBoMToolOverview.TreePanel", {
 				dataIndex: 'text',
 				sortable: false
 			},{
+				header: mw.message('bs-webbomtool-license-column-header').plain(),
+				flex: 2,
+				dataIndex: 'license',
+				sortable: false
+			},{
 				header: mw.message('bs-webbomtool-compatibility-column-header').plain(),
 				flex: 2,
 				dataIndex: 'compatible',

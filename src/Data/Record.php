@@ -8,4 +8,5 @@ class Record extends \BlueSpice\Data\Record {
 	public const TRACKING = 'tracking';
 	public const ID = 'id';
 	public const COMPATIBLE = 'compatible';
+	public const LICENSE = 'license';
 }

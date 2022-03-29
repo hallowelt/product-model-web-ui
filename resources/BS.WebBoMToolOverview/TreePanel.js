@@ -55,7 +55,8 @@ Ext.define( "BS.WebBoMToolOverview.TreePanel", {
 				header: mw.message('bs-webbomtool-compatibility-column-header').plain(),
 				flex: 2,
 				dataIndex: 'compatible',
-				sortable: false
+				sortable: false,
+				renderer: this.renderIcon
 			},
 			new Ext.grid.column.Action({
 				header: mw.message('bs-extjs-actions-column-header').plain(),
@@ -120,6 +121,16 @@ Ext.define( "BS.WebBoMToolOverview.TreePanel", {
 	onBtnRemoveClick: function ( oButton, oStore, oEvent ) {
 		console.log( 'not implemented' );
 		return;
+	},
+
+	renderIcon: function( value, meta ) {
+		meta.tdCls = "ns-manager-icon";
+		var icon = '<img src="' + mw.config.get( "wgScriptPath" ) + '/extensions/BlueSpiceFoundation/resources/bluespice/images/bs-{0}.png" alt="Icon {0}"/>';
+
+		if ( value === false ) {
+			return icon.format( 'cross' );
+		}
+		return icon.format( 'tick');
 	},
 
 	opPermitted: function( operation ) {

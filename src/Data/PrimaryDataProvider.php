@@ -54,12 +54,22 @@ class PrimaryDataProvider implements \BlueSpice\Data\IPrimaryDataProvider {
 			$products =  $this->getProducts();
 
 			foreach ( $products as $product ) {
-
+				$compatibilityList = $this->getLicenseCompatibilityForProduct( $product->ID );
+				$is_compatible = true;
+				foreach ( $compatibilityList as $key => $compatibilityItem ) {
+					if ( $compatibilityItem["compatibility"] == false ) {
+						$is_compatible = false;
+						break;
+					}
+				}
+				
 				$oProduct = new \stdClass();
 				$oProduct->text = $product->name;
 				$oProduct->leaf = false;
 				$oProduct->tracking = $product->version;
 				$oProduct->id = 'src/' . str_replace( '/', '+', $oProduct->text );
+				$oProduct->compatible = $is_compatible;
+				$oProduct->license = $product->license;
 				$this->data[] = new \BlueSpice\Data\Record( $oProduct );
 
 			}
@@ -116,7 +126,7 @@ class PrimaryDataProvider implements \BlueSpice\Data\IPrimaryDataProvider {
 
 		$output_json = json_decode( $output );
 		
-		error_log( var_export( $output, true ) );
+		//error_log( var_export( $output, true ) );
 
 		foreach ( $output_json->result as $compatibility ) {
 			$package = $compatibility->Package->name;

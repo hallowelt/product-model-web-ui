@@ -18,7 +18,6 @@ class Store implements \BlueSpice\Data\IStore {
 	 */
 	public function __construct( $context, $loadBalancer ) {
 		$this->context = $context;
-		error_log( var_export( $this->context->getRequest(), true));
 		$this->loadBalancer = $loadBalancer;
 	}
 

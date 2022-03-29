@@ -32,6 +32,11 @@ class Schema extends \BlueSpice\Data\Schema {
 				self::SORTABLE => true,
 				self::TYPE => FieldType::BOOLEAN
 			],
+			Record::LICENSE => [
+				self::FILTERABLE => true,
+				self::SORTABLE => true,
+				self::TYPE => FieldType::STRING
+			],
 		] );
 	}
 }

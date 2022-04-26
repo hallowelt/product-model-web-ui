@@ -68,7 +68,8 @@
 		"BeforePageDisplay": "WebBoMTool\\Hook\\BeforePageDisplay\\AddModules::callback"
 	},
 	"APIModules": {
-		"bs-webbomtool-product-store": "\\WebBoMTool\\Api\\Store\\Products"
+		"bs-webbomtool-product-store": "\\WebBoMTool\\Api\\Store\\Products",
+		"bs-webbomtool-product-tasks": "\\WebBoMTool\\Api\\Task\\Products"
 	},
 	"manifest_version": 2
 }

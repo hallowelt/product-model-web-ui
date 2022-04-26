@@ -77,9 +77,7 @@ Ext.define( "BS.WebBoMToolOverview.TreePanel", {
 						iconCls: 'bs-extjs-actioncolumn-icon bs-icon-eye',
 						dataIndex: 'link',
 						glyph: true,
-						handler: function( object, index, col, object2, object3, store) {
-							window.open( store.data.link, '_blank' );
-						}
+						handler: this.onEyeClick
 					}
 				],
 				menuDisabled: true,
@@ -98,6 +96,18 @@ Ext.define( "BS.WebBoMToolOverview.TreePanel", {
 
 		this.callParent();
 	},
+	onEyeClick: function() {
+		bs.api.tasks.exec(
+			'webbomtool-product',
+			'startScan'
+		).done( function( result ) {
+			bs.util.alert( 'bs-webbomtool-product-tasks-success', {
+					title: 'Task executed successfully',
+					text: result.message
+				}
+			);
+		});
+	},
 	onItemclick: function ( obj, record, item, index, e, eOpts ) {
 		this.btnRemove.enable();
 		this.btnRemove.element = record;
@@ -114,7 +124,16 @@ Ext.define( "BS.WebBoMToolOverview.TreePanel", {
 	},
 
 	onBtnAddClick: function ( oButton, oEvent ) {
-		console.log( 'not implemented' );
+		bs.api.tasks.exec(
+			'webbomtool-product',
+			'initialise'
+		).done( function( result ) {
+			bs.util.alert( 'bs-webbomtool-product-tasks-success', {
+					title: 'Task executed successfully',
+					text: result.message
+				}
+			);
+		});
 		return;
 	},
 

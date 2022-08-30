@@ -71,6 +71,7 @@ class PrimaryDataProvider implements \BlueSpice\Data\IPrimaryDataProvider {
 				$oProduct->compatible = $is_compatible;
 				$oProduct->license = $product->license;
 				$oProduct->bomId = $product->ID;
+				$oProduct->version = $product->version;
 				$this->data[] = new \BlueSpice\Data\Record( $oProduct );
 
 			}
@@ -86,6 +87,7 @@ class PrimaryDataProvider implements \BlueSpice\Data\IPrimaryDataProvider {
 					$oComponent = new \stdClass();
 					$oComponent->text = $component->package ? $component->package : $component->name;
 					$oComponent->leaf = true;
+					$oComponent->version = $component->version;
 					$oComponent->tracking = $component->license->spdxId;
 					$oComponent->id = 'src/' . $product->name . '/' . str_replace( '/', '+', $oComponent->text );
 					$oComponent->compatible = $compatibilityList[$oComponent->text]["compatibility"];

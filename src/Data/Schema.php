@@ -42,6 +42,11 @@ class Schema extends \BlueSpice\Data\Schema {
 				self::SORTABLE => true,
 				self::TYPE => FieldType::INT
 			],
+			Record::VERSION => [
+				self::FILTERABLE => true,
+				self::SORTABLE => true,
+				self::TYPE => FieldType::STRING
+			],
 		] );
 	}
 }

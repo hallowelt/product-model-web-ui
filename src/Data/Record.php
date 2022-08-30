@@ -10,4 +10,5 @@ class Record extends \BlueSpice\Data\Record {
 	public const COMPATIBLE = 'compatible';
 	public const LICENSE = 'license';
 	public const BOMID = 'bomId';
+	public const VERSION = 'version';
 }

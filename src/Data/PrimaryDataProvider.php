@@ -70,6 +70,7 @@ class PrimaryDataProvider implements \BlueSpice\Data\IPrimaryDataProvider {
 				$oProduct->id = 'src/' . str_replace( '/', '+', $oProduct->text );
 				$oProduct->compatible = $is_compatible;
 				$oProduct->license = $product->license;
+				$oProduct->bomId = $product->ID;
 				$this->data[] = new \BlueSpice\Data\Record( $oProduct );
 
 			}

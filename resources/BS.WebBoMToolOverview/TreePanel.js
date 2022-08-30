@@ -70,7 +70,7 @@ Ext.define( "BS.WebBoMToolOverview.TreePanel", {
 							me.onBtnRemoveClick( me.btnRemove, store, null);
 						},
 						isDisabled: function( view, rowIndex, colIndex, item, record ) {
-							return record.get( 'tracking' ) ? true : false;
+							return true; //record.get( 'leaf' ) === true ? true : false;
 						}
 					}, {
 						tooltip: mw.message('bs-categorymanager-action-show-category').plain(),
@@ -124,9 +124,42 @@ Ext.define( "BS.WebBoMToolOverview.TreePanel", {
 	},
 
 	onBtnAddClick: function ( oButton, oEvent ) {
+		bs.util.prompt(
+			"bs-webbomtool-add-repository",
+			{
+				titleMsg: "bs-webbomtool-add-repository-title",
+				textMsg: 'bs-webbomtool-add-repository-prompt'
+			},
+			{
+				ok: function( input ) {
+					console.log( input );
+					bs.api.tasks.exec(
+						'webbomtool-product',
+						'initialise',
+						{
+							url: input.value
+						}
+					).done( function( result ) {
+						bs.util.alert( 'bs-webbomtool-product-tasks-success', {
+								title: 'Task executed successfully',
+								text: result.message
+							}
+						);
+					});
+				}
+			}
+		);
+
+		return;
+	},
+	onBtnRemoveClick: function ( oButton, oStore, oEvent ) {
+		console.log( oButton.element.data.bomId );
 		bs.api.tasks.exec(
 			'webbomtool-product',
-			'initialise'
+			'delete',
+			{
+				bomId: oButton.element.data.bomId
+			}
 		).done( function( result ) {
 			bs.util.alert( 'bs-webbomtool-product-tasks-success', {
 					title: 'Task executed successfully',
@@ -134,11 +167,6 @@ Ext.define( "BS.WebBoMToolOverview.TreePanel", {
 				}
 			);
 		});
-		return;
-	},
-
-	onBtnRemoveClick: function ( oButton, oStore, oEvent ) {
-		console.log( 'not implemented' );
 		return;
 	},
 

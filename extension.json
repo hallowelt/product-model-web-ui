@@ -40,7 +40,10 @@
 			],
 			"messages": [
 				"bs-webbomtool-compatibility-column-header",
-				"bs-webbomtool-license-column-header"
+				"bs-webbomtool-license-column-header",
+				"bs-webbomtool-add-repository",
+				"bs-webbomtool-add-repository-title",
+				"bs-webbomtool-add-repository-prompt"
 			]
 		},
 		"ext.webBoMTool": {

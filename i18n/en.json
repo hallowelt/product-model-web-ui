@@ -2,6 +2,7 @@
 	"webbomtool-desc": "English description of WebBoMTool",
 	"bs-webbomtool-compatibility-column-header": "License Compatibility",
 	"bs-webbomtool-license-column-header": "License",
+	"bs-webbomtool-version-column-header": "Version",
 	"webbomtool": "WebBoMTool",
 	"bs-webbomtool-add-repository": "Add repository",
 	"bs-webbomtool-add-repository-title": "Add repository",

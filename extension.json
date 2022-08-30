@@ -43,7 +43,8 @@
 				"bs-webbomtool-license-column-header",
 				"bs-webbomtool-add-repository",
 				"bs-webbomtool-add-repository-title",
-				"bs-webbomtool-add-repository-prompt"
+				"bs-webbomtool-add-repository-prompt",
+				"bs-webbomtool-version-column-header"
 			]
 		},
 		"ext.webBoMTool": {
